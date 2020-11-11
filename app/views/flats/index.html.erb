@@ -1,10 +1,19 @@
 <h1 class="m-2">All Flats</h1>
-<% @flats.each do |flat| %>
-    <div class="card p-3 m-2">
-      <h3> <%= link_to "#{flat.name}", flat_path(flat.id) %> </h3>
-      <p> <%= flat.address %> </p>
-      <p> <%= flat.description %> </p>
-      <p> <%= flat.price_per_night %> </p>
-      <p> <%= flat.number_of_guests %> </p>
-    </div>
-<% end %>
+
+<div class="flats">
+  <% @flats.each do |flat| %>
+      <div class="card m-2">
+        <img class="card-image" src="https://picsum.photos/200?grayscale" alt="card-image">
+        <div class="d-flex justify-content-between align-items-center">
+          <h3 class="pl-2 pt-2"> <%= link_to "#{flat.name}", flat_path(flat.id) %> </h3>
+          <%= link_to "delete", flat_path(flat.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn" %>
+        </div>
+        <div class="p-3">
+          <p> <%= flat.address %> </p>
+          <p> <%= flat.description %> </p>
+          <p> <%= flat.price_per_night %> </p>
+          <p> <%= flat.number_of_guests %> </p>
+        </div>
+      </div>
+  <% end %>
+</div>
